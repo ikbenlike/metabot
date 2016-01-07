@@ -1,0 +1,5 @@
+metabot:
+  build: .
+  environment:
+    - DISCORD_USER=<something>
+    - DISCORD_PASSWORD=<something>
