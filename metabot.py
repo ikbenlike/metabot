@@ -12,69 +12,93 @@ password = os.environ.get("DISCORD_PASSWORD", None)
 
 @client.event
 def on_message(message):
-	if message.content.startswith('$about'):
-		client.send_message(message.channel, 'this bot can be used to read metadata from an image')
-	elif message.content.startswith('$meme'):
-		client.send_message(message.channel, 'bit.ly/1ITzC4D')
-	elif message.content.startswith('$summary'):
-		client.send_message(message.channel, 'read #summary before asking stuff!')
-	elif message.content.startswith('$wiki'):
-		client.send_message(message.channel, 'http://wiki.databutt.com/index.php?title=Main_Page')
-	elif message.content.startswith('$ource'):
-		client.send_message(message.channel, 'sourcecode: https://github.com/ikbenlike/metabot.git')
-	elif message.content.startswith('$ping'):
-		client.send_message(message.channel, 'pong')
-	elif message.content.startswith('$meta'):
-		client.send_message(message.channel, 'this feature will be implemented later on')
-	elif message.content.startswith('$upvote'):
-		client.send_message(message.channel, '+1')
-	elif message.content.startswith('$downvote'):
-		client.send_message(message.channel, '-1')
-	elif message.content.startswith('$repost'):
-		client.send_message(message.channel, 'thats a repost bitch')
-	elif message.content.startswith('$linux'):
-		client.send_message(message.channel, 'https://www.codecademy.com/learn/learn-the-command-line')
-	elif message.content.startswith('!bots'):
-		client.send_message(message.channel, '``` bot that will eventually be able to get metadata from\nimages ```')
-	elif message.content.startswith('$bots'):
-		client.send_message(message.channel, '``` bot that will eventually be able to get metadata from\nimages ```')
-	elif message.content.startswith(';bots'):
-		client.send_message(message.channel, '``` bot that will eventually be able to get metadata from\nimages ```')
-	elif message.content.startswith('$new'):
-		client.send_message(message.channel, '``` \n read #rules for the rules \n read #summary for the summary \n read tools for useful tools \n ```')
-	elif message.content.startswith('$hame'):
-		client.send_message(message.channel, 'http://i.imgur.com/CFTIRA1.gif')
-	elif message.content.startswith('$kynet'):
-		client.send_message(message.channel, 'http://www.blastr.com/sites/blastr/files/Terminator-Salvation_0.jpg')
-	elif message.content.startswith('$nigger'):
-		client.send_message(message.channel, 'https://youtu.be/0yJn-5hpU94')
-	elif message.content.startswith('$garage'):
-		client.send_message(message.channel, 'https://youtu.be/Cv1RJTHf5fk')
-	elif message.content.startswith('$wam'):
-		client.send_message(message.channel, 'https://youtu.be/_pVNvSuA2mM')
-	elif message.content.startswith('$toomuch'):
-		client.send_message(message.channel, 'https://youtu.be/Nar-uT50-pM')
-	elif message.content.startswith('$commands'):
-		client.send_message(message.channel, commands)
-	elif message.content.startswith('$ucommands'):
-		client.send_message(message.channel, commandsu)
-	elif message.content.startswith('$host'):
-		#domain = message.content.split(' ')[1]
-		output = subprocess.check_output(['host', '-a', 'google.com'], shell=True, stderr=subprocess.PIPE)
-		client.send_message(message.channel, output)
-		client.send_message(message.channel, output)
-	elif message.content.startswith('$exit'):
-		if message.author.id == '125422419736395777':
-			client.send_message(message.channel, "why did you kill me?")
-			sys.exit(1)
-		else:
-			client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
-	elif message.content.startswith('$echo'):
-		if message.author.id != '134727236615012354':
-			input_ = message.content
-			input_.split(" ")[0]
-			args = input_.split(" ")[1:]
-			client.send_message(message.channel, (" ".join(args)))
+	if message.author.id != '125490651931344896':
+		if message.content.startswith('$about'):
+			client.send_message(message.channel, 'can ping and host')
+		elif message.content.startswith('$meme'):
+			client.send_message(message.channel, 'bit.ly/1ITzC4D')
+		elif message.content.startswith('$summary'):
+			client.send_message(message.channel, 'read #summary before asking stuff!')
+		elif message.content.startswith('$wiki'):
+			client.send_message(message.channel, 'http://wiki.databutt.com/index.php?title=Main_Page')
+		elif message.content.startswith('$ource'):
+			client.send_message(message.channel, 'sourcecode: https://github.com/ikbenlike/metabot.git')
+		elif message.content.startswith('$ping'):
+			if message.author.id == '125422419736395777':
+				input_ = message.content
+				input_.split(" ")[0]
+				args = input_.split(" ")[1:]
+				site = (' '.join(args))
+				ping = subprocess.check_output(['ping', '-c 3', site], universal_newlines=True)
+				client.send_message(message.channel, '```' + ping + '```')
+			else:
+				client.send_message(message.channel, 'you are not allowed to do that, ' + message.author.name)
+		elif message.content.startswith('$host'):
+			if message.author.id == '125422419736395777':
+				input_ = message.content
+				input_.split(" ")[0]
+				args = input_.split(" ")[1:]
+				site = (' '.join(args))
+				host = subprocess.check_output(['host', site], universal_newlines=True)
+				client.send_message(message.channel, '```' + host + '```')
+			else:
+				client.send_message(message.channel, 'you are not allowed to do that, ' + message.author.name)
+		elif message.content.startswith('$upvote'):
+			client.send_message(message.channel, '+1')
+		elif message.content.startswith('$downvote'):
+			client.send_message(message.channel, '-1')
+		elif message.content.startswith('$repost'):
+			client.send_message(message.channel, 'thats a repost bitch')
+		elif message.content.startswith('$linux'):
+			client.send_message(message.channel, 'https://www.codecademy.com/learn/learn-the-command-line')
+		elif message.content.startswith('!bots'):
+			client.send_message(message.channel, '``` can ping and host ```')
+		elif message.content.startswith('$bots'):
+			client.send_message(message.channel, '``` can ping and host ```')
+		elif message.content.startswith(';bots'):
+			client.send_message(message.channel, '``` can ping and host ```')
+		elif message.content.startswith('$new'):
+			client.send_message(message.channel, '``` \n read #rules for the rules \n read #summary for the summary \n read tools for useful tools \n ```')
+		elif message.content.startswith('$hame'):
+			client.send_message(message.channel, 'http://i.imgur.com/CFTIRA1.gif')
+		elif message.content.startswith('$kynet'):
+			client.send_message(message.channel, 'http://www.blastr.com/sites/blastr/files/Terminator-Salvation_0.jpg')
+		elif message.content.startswith('$nigger'):
+			client.send_message(message.channel, 'https://youtu.be/0yJn-5hpU94')
+		elif message.content.startswith('$garage'):
+			client.send_message(message.channel, 'https://youtu.be/Cv1RJTHf5fk')
+		elif message.content.startswith('$wam'):
+			client.send_message(message.channel, 'https://youtu.be/_pVNvSuA2mM')
+		elif message.content.startswith('$toomuch'):
+			client.send_message(message.channel, 'https://youtu.be/Nar-uT50-pM')
+		elif message.content.startswith('$commands'):
+			client.send_message(message.channel, commands)
+		elif message.content.startswith('$ucommands'):
+			client.send_message(message.channel, commandsu)
+		elif message.content.startswith('$exit'):
+			if message.author.id == '125422419736395777':
+				client.send_message(message.channel, "why did you kill me?")
+				sys.exit(1)
+			else:
+				client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
+		elif message.content.startswith('$echo'):
+			if message.author.id != '134727236615012354':
+				input_ = message.content
+				input_.split(" ")[0]
+				args = input_.split(" ")[1:]
+				client.send_message(message.channel, (" ".join(args)))
+		elif message.content.startswith('$game'):
+			if message.author.id == '125422419736395777':
+				input_ = message.content
+				input_.split(" ")[0]
+				stuff = input_.split(" ")[1:]
+				gameName = (" ".join(stuff))
+				game = discord.Game()
+				game.name = gameName
+				client.change_status(game=game)
+				client.send_message(message.channel, 'game has been set to ' + gameName)
+			else:
+				client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
 
 @client.event
 def on_ready():
