@@ -99,6 +99,12 @@ def on_message(message):
 				client.send_message(message.channel, 'game has been set to ' + gameName)
 			else:
 				client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
+		elif message.content.startswith('$lmgtfy'):
+			input_ = message.content
+			input_.split(' '[0]
+			searchString = input_.split(' ')[1:]
+			search = (' '.join(stuff))
+			client.send_message(message.channel, 'http://lmgtfy.com/?q=' + search)
 
 @client.event
 def on_ready():
@@ -106,8 +112,5 @@ def on_ready():
 	print(client.user.name)
 	print(client.user.id)
 	print('------')
-	game = discord.Game()
-	game.name = 'your mom'
-	client.change_status(game=game)
 
 client.run()
