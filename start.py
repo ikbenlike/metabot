@@ -1,6 +1,7 @@
 import discord
 import requests
 import subprocess
+import sys
 
 client = discord.Client()
 user = os.environ.get("DISCORD_USER", None)
