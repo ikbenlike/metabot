@@ -3,6 +3,7 @@ import requests
 import threading
 import subprocess
 import sys
+import command
 
 commands = '``` \n$about	about this bot\n$summary	tell someone to read summary\n$wiki	link to wiki\n$ource	displays source\n$linux	link to commandline guide\n!bots/;bots/$bots	prints bots\n$new	tells new guy what to do\n$ucommandsu	print useless commands```'
 commandsu = '``` \n$meme	linksto very funny memes \n$ping	prints pong\n$upvote	prints +1\n$downvote	prints -1\n$repost	prints this is a repost bitch\n$hame	really funny gif\n$kynet	terminator reference\n$wam	dedotated wam\n```'
