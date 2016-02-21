@@ -10,6 +10,7 @@ import requests
 import subprocess
 import sys
 
+#input = raw_input
 
 def actNoperm(client, channel, message):
 	client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
@@ -176,3 +177,37 @@ def comEcho(client, channel, message):
 		input_.split(" ")[0]
 		args = input_.split(" ")[1:]
 		client.send_message(message.channel, (" ".join(args)))
+
+
+
+def comDarude(client, channel, message):
+	client.send_message(message.channel, "https://youtu.be/y6120QOlsfU")
+
+
+def comNo(client, channel, message):
+	client.send_message(message.channel, "http://giphy.com/gifs/the-office-no-steve-carell-12XMGIWtrHBl5e")
+
+
+
+def comSummary(client, channel, message):
+	client.send_message(message.channel, "Metabot is an amazing python program, made by TheWatcher, that has commands that can can be executed with $ and a pre-made command")
+
+
+
+def comSandstorm(client, channel, message):
+	client.send_message(message.channel, "https://youtu.be/y6120QOlsfU")
+
+
+
+def comNuke(client, channel, message):
+	client.send_message(message.channel, "https://giphy.com/gifs/reaction-XevXoNu5WZxe0")
+
+
+
+def comSpam(client, channel, message):
+	client.send_message(message.channel, "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Spam_can.png/220px-Spam_can.png")
+
+
+
+def comStrawman(client, channel, message):
+	client.send_message(message.channel, "https://youtu.be/WPMcm7lef9Y")

@@ -1,20 +1,32 @@
 import discord
 import requests
 import subprocess
+import command
 import sys
 
-client = discord.Client()
-user = os.environ.get("DISCORD_USER", None)
-password = os.environ.get("DISCORD_PASSWORD", None)
 
+inEmail = input("email: ")
+inPassword = input("password: ")
+
+
+client = discord.Client()
+client.login(inEmail, inPassword)
 @client.event
 def on_message(message):
-	if message.content.startswith('$tart'):
-		if message.author.id == '125422419736395777':
-			subprocess.call(['python3', 'metabot.py'], universal_newlines=True)
-			client.send_message(message.channel, 'MetaBot started')
-		else:
-			client.send_message(message.channel, 'you are not allowed to do that')
+	channel = message.channel
+	off = False
+	if off != True:
+		if message.content.startswith('$tart'):
+			if message.author.id == '125422419736395777':
+				subprocess.call(['python3', 'metabot.py'], universal_newlines=True)
+				off = True
+			else:
+				command.actNoperm(client, channel, message)
+		if message.content.startswith('$kill'):
+			if message.author.id == '125422419736395777':
+				command.comExit(client, channel, message)
+
+
 
 @client.event
 def on_ready():

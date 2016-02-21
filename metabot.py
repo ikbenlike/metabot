@@ -1,16 +1,20 @@
 import discord
 import requests
-import threading
 import subprocess
+import threading
 import sys
+import sh
 import command
 
-commands = '``` \n$about	about this bot\n$summary	tell someone to read summary\n$wiki	link to wiki\n$ource	displays source\n$linux	link to commandline guide\n!bots/;bots/$bots	prints bots\n$new	tells new guy what to do\n$ucommandsu	print useless commands```'
+
+inEmail = input("email: ")
+inPassword = input("password: ")
+
+
+commands = '``` \n$about	about this bot\n$summary	tell someone to read summary\n$wiki	link to wiki\n$ource	displays source\n$linux	link to commandline guide\n!bots/;bots/$bots	prints bots\n$new	tells new guy what to do\n$ucommands	print useless commands```'
 commandsu = '``` \n$meme	linksto very funny memes \n$ping	prints pong\n$upvote	prints +1\n$downvote	prints -1\n$repost	prints this is a repost bitch\n$hame	really funny gif\n$kynet	terminator reference\n$wam	dedotated wam\n```'
-
 client = discord.Client()
-client.login('email', 'password')
-
+client.login(inEmail, inPassword)
 @client.event
 def on_message(message):
 	channel = message.channel
@@ -55,8 +59,6 @@ def on_message(message):
 		command.comShame(client, channel, message)
 	elif message.content.startswith('$kynet'):
 		command.comSkynet(client, channel, message)
-	elif message.content.startswith('$nigger'):
-		client.send_message(message.channel, 'https://youtu.be/0yJn-5hpU94')
 	elif message.content.startswith('$garage'):
 		command.comGarage(client, channel, message)
 	elif message.content.startswith('$wam'):
@@ -90,6 +92,18 @@ def on_message(message):
 		command.actError(client, channel, message)
 	elif message.content.startswith('$kappa'):
 		command.comKappa(client, channel, message)
+	elif message.content.startswith('$no'):
+		command.comNo(client, channel, message)
+	elif message.content.startswith('#summary'):
+		command.comSummary(client, channel, message)
+	elif message.content.startswith('$andstorm'):
+		command.comDarude(client, channel, message)
+	elif message.content.startswith('$nuke'):
+		command.comNuke(client, channel, message)
+	elif message.content.startswith('$pam'):
+		command.comSpam(client, channel, message)
+	elif message.content.startswith('$trawman'):
+		command.comStrawman(client, channel, message)
 
 @client.event
 def on_ready():
