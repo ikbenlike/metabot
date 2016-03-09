@@ -9,6 +9,7 @@ import discord
 import requests
 import subprocess
 import sys
+import socket
 
 #input = raw_input
 
@@ -61,19 +62,6 @@ def comPing(client, channel, message):
 		site = (' '.join(args))
 		ping = subprocess.check_output(['ping', '-c 3', site], universal_newlines=True)
 		client.send_message(message.channel, '```' + ping + '```')
-	else:
-		client.send_message(message.channel, "you're not allowed to do that, " + message.author.name)
-
-
-
-def comHost(client, channel, message):
-	if message.author.id == '125422419736395777':
-		input_ = message.content
-		input_.split(" ")[0]
-		args = input_.split(" ")[1:]
-		site = (' '.join(args))
-		host = subprocess.check_output(['host', site], universal_newlines=True)
-		client.send_message(message.channel, '```' + host + '```')
 	else:
 		client.send_message(message.channel, "you're not allowed to do that, " + message.author.name)
 
@@ -137,7 +125,8 @@ def comHost(client, channel, message):
 	input_.split(" ")[0]
 	args = input_.split(" ")[1:]
 	site = (' '.join(args))
-	host = subprocess.check_output(['host', site], universal_newlines=True)
+	#host = subprocess.check_output(['host', site], universal_newlines=True)
+	host = "\n".join([s[4][0] for s in socket.getaddrinfo(site, "443")])
 	client.send_message(message.channel, '```' + host + '```')
 
 
@@ -211,3 +200,13 @@ def comSpam(client, channel, message):
 
 def comStrawman(client, channel, message):
 	client.send_message(message.channel, "https://youtu.be/WPMcm7lef9Y")
+
+
+
+def comChanid(client, channel, message):
+	input_ = message.content
+	input_.split(" ")[0]
+	args = input_.split(" ")[1:]
+	Chan = (" ".join(args))
+	Chanid = hash(Chan)
+	client.send_message(message.channel, Chanid)

@@ -4,11 +4,14 @@ import subprocess
 import threading
 import sys
 import sh
+import os
 import command
 
 
 inEmail = input("email: ")
 inPassword = input("password: ")
+os.system('clear')
+prefix = "$"
 
 
 commands = '``` \n$about	about this bot\n$summary	tell someone to read summary\n$wiki	link to wiki\n$ource	displays source\n$linux	link to commandline guide\n!bots/;bots/$bots	prints bots\n$new	tells new guy what to do\n$ucommands	print useless commands```'
@@ -19,11 +22,11 @@ client.login(inEmail, inPassword)
 def on_message(message):
 	channel = message.channel
 	command.actLog(client, channel, message)
-	if message.content.startswith('$about'):
+	if message.content.startswith(prefix + 'about'):
 		client.send_message(message.channel, 'can ping and host')
-	elif message.content.startswith('$meme'):
+	elif message.content.startswith(prefix + 'meme'):
 		client.send_message(message.channel, 'bit.ly/1ITzC4D')
-	elif message.content.startswith('$summary'):
+	elif message.content.startswith(prefix + 'summary'):
 		client.send_message(message.channel, 'read #summary before asking stuff!')
 	elif message.content.startswith('$wiki'):
 		client.send_message(message.channel, 'http://wiki.databutt.com/index.php?title=Main_Page')
@@ -35,10 +38,7 @@ def on_message(message):
 		else:
 			command.actNoperm(client, channel, message)
 	elif message.content.startswith('$host'):
-		if message.author.id == '125422419736395777':
-			command.comHost(client, channel, message)
-		else:
-			command.actNoperm(client, channel, message)
+		command.comHost(client, channel, message)
 	elif message.content.startswith('$upvote'):
 		client.send_message(message.channel, '+1')
 	elif message.content.startswith('$downvote'):
@@ -104,6 +104,10 @@ def on_message(message):
 		command.comSpam(client, channel, message)
 	elif message.content.startswith('$trawman'):
 		command.comStrawman(client, channel, message)
+	elif message.content.startswith('$chanhash'):
+		#command.comChanid(client, channel, message)
+		uName = input("what channel m80890: ")
+		print([m.id for m in client.get_all_channels() if m.name == uName])
 
 @client.event
 def on_ready():
@@ -112,5 +116,8 @@ def on_ready():
 	print(client.user.id)
 	print('------')
 	print('----MetaBot has started----')
+	#uName = input("what channel m80890: ")
+	#channels = [m for m in client.get_all_channels() if Channel.id == uName]
+	#print(channels)
 
 client.run()

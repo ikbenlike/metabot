@@ -3,11 +3,12 @@ import requests
 import subprocess
 import command
 import sys
+import os
 
 
 inEmail = input("email: ")
 inPassword = input("password: ")
-
+os.system('clear')
 
 client = discord.Client()
 client.login(inEmail, inPassword)
