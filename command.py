@@ -210,3 +210,8 @@ def comChanid(client, channel, message):
 	Chan = (" ".join(args))
 	Chanid = hash(Chan)
 	client.send_message(message.channel, Chanid)
+
+
+
+def comNarude(client, channel, message):
+	client.send_message(message.channel, "https://youtu.be/1gVMv1pw4Gw")

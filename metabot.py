@@ -108,6 +108,8 @@ def on_message(message):
 		#command.comChanid(client, channel, message)
 		uName = input("what channel m80890: ")
 		print([m.id for m in client.get_all_channels() if m.name == uName])
+	elif message.content.startswith('$narude'):
+		command.comNarude(client, channel, message)
 
 @client.event
 def on_ready():
