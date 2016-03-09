@@ -10,8 +10,11 @@ import requests
 import subprocess
 import sys
 import socket
+import os
 
 #input = raw_input
+
+ownerID = "125422419736395777"
 
 def actNoperm(client, channel, message):
 	client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
@@ -31,6 +34,7 @@ def actError(client, channel, message):
 	msgData = message.author.name + ' ' + message.author.id + ' ' + message.content + '\n'
 	er_report = open("report-error.txt", "a")
 	er_report.write(msgData)
+	er_report.close()
 
 
 
@@ -55,7 +59,7 @@ def comSource(client, channel, message):
 
 
 def comPing(client, channel, message):
-	if message.author.id == '125422419736395777':
+	if message.author.id == ownerID:
 		input_ = message.content
 		input_.split(" ")[0]
 		args = input_.split(" ")[1:]
@@ -215,3 +219,48 @@ def comChanid(client, channel, message):
 
 def comNarude(client, channel, message):
 	client.send_message(message.channel, "https://youtu.be/1gVMv1pw4Gw")
+
+
+
+def actClear(client, channel, message):
+	if message.author.id == ownerID:
+		input_ = message.content
+		input_.split(" ")[0]
+		args = input_.split(" ")[1:]
+		if "-t" in args:
+			if os.name == "nt":
+				os.system("cls")
+			elif os.name == "posix":
+				os.system("clear")
+		if "-l" in args:
+			logs = open("logs.txt", "w")
+			logs.write("[reset logs]\n")
+			logs.close()
+		if "-erl" in args:
+			er_report = open("report-error.txt", "w")
+			er_report.write("[reset logs]\n")
+			er_report.close()
+	else:
+		actNoperm(client, channel, message)
+
+
+
+def actSend(client, channel, message):
+	if message.author.id == ownerID:
+			input_ = message.content
+			input_.split(" ")[0]
+			args = input_.split(" ")[1:]
+			if "-l" in args:
+				client.send_file(message.channel, "logs.txt")
+			if "-erl" in args:
+				client.send_file(message.channel, "report-error.txt")
+			if "-a" in args:
+				client.send_file(message.channel, "logs.txt")
+				client.send_file(message.channel, "report-error.txt")
+	else:
+		actNoperm(client, channel, message)
+
+
+
+def comWizard(client, channel, message):
+	client.send_message(message.channel, "https://youtu.be/tKNhPpUR0Pg")
