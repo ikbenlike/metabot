@@ -14,8 +14,25 @@ os.system('clear')
 prefix = "$"
 
 
-commands = '``` \n$about	about this bot\n$summary	tell someone to read summary\n$wiki	link to wiki\n$ource	displays source\n$linux	link to commandline guide\n!bots/;bots/$bots	prints bots\n$new	tells new guy what to do\n$ucommands	print useless commands```'
-commandsu = '``` \n$meme	linksto very funny memes \n$ping	prints pong\n$upvote	prints +1\n$downvote	prints -1\n$repost	prints this is a repost bitch\n$hame	really funny gif\n$kynet	terminator reference\n$wam	dedotated wam\n```'
+commands = ('``` \n$about				   about this bot\n'
+				 '$summary				 tell someone to read summary\n'
+				 '$wiki					link to wiki\n'
+				 '$ource				   displays source\n'
+				 '$linux				   link to commandline guide\n'
+				 '!bots/;bots/$bots		prints bots\n'
+				 '$new					 tells new guy what to do\n'
+				 '$ucommands			   print useless commands```'
+			)
+
+commandsu = ('``` \n$meme		linksto very funny memes \n'
+					'$ping		prints pong\n'
+					'$upvote	  prints +1\n'
+					'$downvote	prints -1\n'
+					'$repost	  prints this is a repost bitch\n'
+					'$hame		really funny gif\n'
+					'$kynet	   terminator reference\n'
+					'$wam		 dedotated wam\n```'
+			)
 client = discord.Client()
 client.login(inEmail, inPassword)
 @client.event
@@ -33,10 +50,7 @@ def on_message(message):
 	elif message.content.startswith('$ource'):
 		command.comSource(client, channel, message)
 	elif message.content.startswith('$ping'):
-		if message.author.id == '125422419736395777':
-			command.comPing(client, channel, message)
-		else:
-			command.actNoperm(client, channel, message)
+		command.comPing(client, channel, message)
 	elif message.content.startswith('$host'):
 		command.comHost(client, channel, message)
 	elif message.content.startswith('$upvote'):
@@ -70,19 +84,12 @@ def on_message(message):
 	elif message.content.startswith('$ucommands'):
 		client.send_message(message.channel, commandsu)
 	elif message.content.startswith('$exit'):
-		if message.author.id == '125422419736395777':
-			#command.comExit(client, channel, message)
-			client.send_message(message.channel, "why did you kill me?")
-			sys.exit(1)
-		else:
-			command.actNoperm(client, channel, message)
+		client.send_message(message.channel, "why did you kill me?")
+		sys.exit(1)
 	elif message.content.startswith('$echo'):
 		command.comEcho(client, channel, message)
 	elif message.content.startswith('$game'):
-		if message.author.id == '125422419736395777':
-			command.comGame(client, channel, message)
-		else:
-			command.actNoperm(client, channel, message)
+		command.comGame(client, channel, message)
 	elif message.content.startswith('$lmgtfy '):
 		command.comLmgtfy(client, channel, message)
 	elif message.content.startswith('$members'):
@@ -104,10 +111,6 @@ def on_message(message):
 		command.comSpam(client, channel, message)
 	elif message.content.startswith('$trawman'):
 		command.comStrawman(client, channel, message)
-	elif message.content.startswith('$chanhash'):
-		#command.comChanid(client, channel, message)
-		uName = input("what channel m80890: ")
-		print([m.id for m in client.get_all_channels() if m.name == uName])
 	elif message.content.startswith('$narude'):
 		command.comNarude(client, channel, message)
 	elif message.content.startswith('$clear'):
@@ -124,8 +127,5 @@ def on_ready():
 	print(client.user.id)
 	print('------')
 	print('----MetaBot has started----')
-	#uName = input("what channel m80890: ")
-	#channels = [m for m in client.get_all_channels() if Channel.id == uName]
-	#print(channels)
 
 client.run()
