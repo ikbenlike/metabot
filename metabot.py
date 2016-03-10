@@ -54,7 +54,7 @@ def on_message(message):
 	elif message.content.startswith('$host'):
 		command.comHost(client, channel, message)
 	elif message.content.startswith('$upvote'):
-		client.send_message(message.channel, '+1')
+		command.comUpvote(client, channel, message)
 	elif message.content.startswith('$downvote'):
 		client.send_message(message.channel, '-1')
 	elif message.content.startswith('$repost'):
