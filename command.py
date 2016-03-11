@@ -67,36 +67,36 @@ def comPing(client, channel, message):
 		ping = subprocess.check_output(['ping', '-c 3', site], universal_newlines=True)
 		client.send_message(message.channel, '```' + ping + '```')
 	else:
-		client.send_message(message.channel, "you're not allowed to do that, " + message.author.name)
+		actNoperm(client, channel, message)
 
 
 
-def comUpvote(client, channel, message):
-	client.send_message(message.channel, "+1")
+async def comUpvote(client, channel, message):
+	await client.send_message(message.channel, "+1")
 
 
 
-def comDownvote(client, channel, message):
-	client.send_message(message.channel, "-1")
+async def comDownvote(client, channel, message):
+	await client.send_message(message.channel, "-1")
 
 
 
-def comRepost(client, channel, message):
-	client.send_message(message.channel, 'thats a repost bitch')
+async def comRepost(client, channel, message):
+	await client.send_message(message.channel, 'thats a repost bitch')
 
 
 
-def comBots():
-	client.send_message(message.channel, '``` can ping and host ```')
+async def comBots():
+	await client.send_message(message.channel, '``` can ping and host ```')
 
 
 
-def comShame(client, channel, message):
-	client.send_message(message.channel, 'http://i.imgur.com/CFTIRA1.gif')
+async def comShame(client, channel, message):
+	await client.send_message(message.channel, 'http://i.imgur.com/CFTIRA1.gif')
 
 
 
-def comGame(client, channel, message):
+async def comGame(client, channel, message):
 	if message.author.id == ownerID:
 		input_ = message.content
 		input_.split(" ")[0]
@@ -104,16 +104,19 @@ def comGame(client, channel, message):
 		gameName = (" ".join(stuff))
 		game = discord.Game()
 		game.name = gameName
-		client.change_status(game=game)
-		client.send_message(message.channel, 'game has been set to ' + gameName)
+		await client.change_status(game=game)
+		await client.send_message(message.channel, 'game has been set to ' + gameName)
 	else:
-		actNoperm(client, channel, message)
+		await actNoperm(client, channel, message)
 
 
 
-def comExit(client, channel, message):
-	client.send_message(message.channel, "why did you kill me?")
-	sys.exit(1)
+async def comExit(client, channel, message):
+	if message.author.id == ownerID:
+		await client.send_message(message.channel, "why did you kill me?")
+		await sys.exit(1)
+	else:
+		await actNoperm(client, channel, message)
 
 
 

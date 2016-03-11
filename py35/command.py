@@ -256,3 +256,18 @@ async def actSend(client, channel, message):
 
 async def comWizard(client, channel, message):
 	await client.send_message(message.channel, "https://youtu.be/tKNhPpUR0Pg")
+
+
+
+async def comHogwarts(client, channel, message):
+	await client.send_message(message.channel, "https://youtu.be/mT7PPED0deA")
+
+
+
+async def comOnmention(client, channel, message):
+	await client.send_message(message.channel, "hi there!")
+
+
+
+async def comNoice(client, channel, message):
+	await client.send_message(message.channel, "https://youtu.be/EGkz5LiUlIg")

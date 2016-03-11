@@ -125,6 +125,12 @@ async def on_message(message):
 		await command.actSend(client, channel, message)
 	elif message.content.startswith('$wizard'):
 		await command.comWizard(client, channel, message)
+	elif message.content.startswith('$hogwarts'):
+		await command.comHogwarts(client, channel, message)
+	elif message.content.startswith('$nice'):
+		await command.comNoice(client, channel, message)
+	if '<@' + client.user.id + '>' in message.content:
+		await command.comOnmention(client, channel, message)
 
 @client.event
 async def on_ready():

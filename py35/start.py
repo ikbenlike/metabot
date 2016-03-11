@@ -20,12 +20,16 @@ async def on_message(message):
 	if off != True:
 		if message.content.startswith('$tart'):
 			if message.author.id == '125422419736395777':
-				subprocess.call(['python3.5', 'metabot.py'], universal_newlines=True)
-				off = True
+				p = subprocess.Popen(["python3.5", "metabot.py"])
+				while p.poll() is None:
+					await asyncio.sleep(1)
+				return_code = p.poll()
+				off = False
 			else:
 				await command.actNoperm(client, channel, message)
 		if message.content.startswith('$kill'):
 			await command.comExit(client, channel, message)
+			off = True
 
 
 
