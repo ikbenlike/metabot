@@ -8,13 +8,20 @@ import os
 import command
 import asyncio
 
+logInFromFile = False
 
-inEmail = input("email: ")
-inPassword = input("password: ")
-if os.name == "nt":
-	os.system("cls")
-elif os.name == "posix":
-	os.system('clear')
+if logInFromFile == False:
+	inEmail = input("email: ")
+	inPassword = input("password: ")
+	if os.name == "nt":
+		os.system("cls")
+	elif os.name == "posix":
+		os.system('clear')
+elif logInFromFile == True:
+	with open("config/inemail.txt") as loginemail:
+		inEmail = loginemail.read().replace('\n', '')
+	with open("config/inpassword.txt") as loginpassword:
+		inPassword = loginpassword.read().replace('\n', '')
 
 
 with open("config/prefix.txt") as myfile:
