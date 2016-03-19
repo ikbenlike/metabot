@@ -6,7 +6,6 @@ by thewatcher
 have fun roasting me lel
 """
 import discord
-import requests
 import subprocess
 import sys
 import socket

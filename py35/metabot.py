@@ -1,9 +1,7 @@
 import discord
 import requests
 import subprocess
-import threading
 import sys
-import sh
 import os
 import command
 import asyncio
