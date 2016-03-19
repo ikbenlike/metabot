@@ -14,6 +14,7 @@ import os
 import asyncio
 
 ownerID = "125422419736395777"
+tLog = True
 
 async def actNoperm(client, channel, message):
 	await client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
@@ -23,7 +24,8 @@ async def actNoperm(client, channel, message):
 def actLog(client, channel, message):
 	msgData = message.author.name + ' ' + message.author.id + ' ' + message.content + '\n'
 	msgData = msgData.replace('\n', '\n        ')
-	print(msgData)
+	if tLog == True:
+		print(msgData)
 	logs = open("logs.txt", "a")
 	logs.write(msgData)
 
@@ -260,7 +262,7 @@ async def comWizard(client, channel, message):
 
 
 async def comHogwarts(client, channel, message):
-	await client.send_message(message.channel, "https://youtu.be/mT7PPED0deA")
+	await client.send_message(message.channel, "https://youtu.be/Y0N8WZMImCI")
 
 
 
@@ -271,3 +273,98 @@ async def comOnmention(client, channel, message):
 
 async def comNoice(client, channel, message):
 	await client.send_message(message.channel, "https://youtu.be/EGkz5LiUlIg")
+
+
+
+async def comNigif(client, channel, message):
+	await client.send_message(message.channel, "https://media.giphy.com/media/yJFeycRK2DB4c/giphy.gif")
+
+
+
+async def comGlory(client, channel, message):
+	await client.send_message(message.channel, "http://www.pxleyes.com/blog/wp-content/uploads/showcases/comm/17.jpg")
+
+
+
+async def actSwitchLog(client, channel, message):
+	global tLog
+	if message.author.id == ownerID:
+		input_ = message.content
+		input_.split(" ")[0]
+		args = input_.split(" ")[1:]
+		if "-t" in args:
+			if "off" in args:
+				tLog = False
+				await client.send_message(message.channel, "```turned terminal logging off```")
+			elif "on" in args:
+				tLog = True
+				await client.send_message(message.channel, "```turned terminal logging on```")
+	else:
+		await actNoperm(client, channel, message)
+
+
+
+async def comPM(client, channel, message):
+	input_ = message.content
+	input_.split(" ")[0]
+	args = input_.split(" ")[1:]
+	text = input_.split(" ")[2:]
+	uName = args[0]
+	spamText = (" ".join(text))
+	print([m.id for m in client.get_all_members() if m.name == uName])
+	targetUser = [m for m in client.get_all_members() if m.id == uName]
+	await client.send_message(targetUser[0], "```" + spamText + "```" + "this message was sent by " + message.author.name + " (ID: " + message.author.id + ")")
+
+
+
+async def comID(client, channel, message):
+	input_ = message.content
+	input_.split(" ")[0]
+	args = input_.split(" ")[1:]
+	uName = (" ".join(args))
+	uIDlist = [m.id for m in client.get_all_members() if m.name == uName]
+	uID = uIDlist[0]
+	await client.send_message(message.channel, uID)
+
+
+
+async def comBing(client, channel, message):
+	input_ = message.content
+	input_.split(' '[0])
+	searchString = input_.split(' ')[1:]
+	search = ('+'.join(searchString))
+	await client.send_message(message.channel, "http://www.bing.com/search?q=" + search)
+
+
+
+async def comDuck(client, channel, message):
+	input_ = message.content
+	input_.split(' '[0])
+	searchString = input_.split(' ')[1:]
+	search = ('+'.join(searchString))
+	await client.send_message(message.channel, "https://duckduckgo.com/?q=" + search + "&ia=about")
+
+
+
+async def comPuppet(client, channel, message):
+	await client.send_message(message.channel, "https://youtu.be/V_j0u0MAsqI")
+
+
+
+async def comHobbits(client, channel, message):
+	await client.send_message(message.channel, "https://youtu.be/uE-1RPDqJAY")
+
+
+
+async def comRum(client, channel, message):
+	await client.send_message(message.channel, "https://youtu.be/JImcvtJzIK8")
+
+
+
+async def comTroll(client, channel, message):
+	await client.send_message(message.channel, "https://youtu.be/KaqC5FnvAEc")
+
+
+
+async def comBoyz(client, channel, message):
+	await client.send_message(message.channel, "https://youtu.be/1a6WO1g0yGk")
