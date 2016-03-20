@@ -12,7 +12,6 @@ import socket
 import os
 import asyncio
 
-ownerID = "125422419736395777"
 tLog = True
 
 with open("config/prefix.txt") as myfile:
@@ -278,7 +277,9 @@ async def comHogwarts(client, channel, message):
 
 
 async def comOnmention(client, channel, message):
-	await client.send_message(message.channel, "hi there!")
+	with open("config/prefix.txt") as myfile:
+		sayPrefix=myfile.read().replace('\n', '')
+	await client.send_message(message.channel, "Hi there! My prefix is " + sayPrefix + ". Type `" + sayPrefix + "commands` to see my commands")
 
 
 
@@ -381,18 +382,21 @@ async def comBoyz(client, channel, message):
 	await client.send_message(message.channel, "https://youtu.be/1a6WO1g0yGk")
 
 
+
 async def actPrefix(client, channel, message):
-	if message.author.id in modIDs:
-		input_ = message.content
-		input_.split(" ")
-		args = input_.split(" ")[1:]
-		setPrefixTo = args[0]
-		prefixFile = open("config/prefix.txt", "w")
-		prefixFile.write(setPrefixTo)
-		prefixFile.close()
-		await client.send_message(message.channel, client.user.name + "'s prefix has changed to " + setPrefixTo)
-	else:
-		await actNoperm(client, channel, message)
+    global prefix
+    global setPrefixTo
+    if message.author.id in modIDs:
+        input_ = message.content
+        input_.split(" ")
+        args = input_.split(" ")[1:]
+        setPrefixTo = args[0]
+        prefixFile = open("config/prefix.txt", "w")
+        prefixFile.write(setPrefixTo)
+        prefixFile.close()
+        await client.send_message(message.channel, client.user.name + "'s prefix has changed to " + setPrefixTo)
+    else:
+        await actNoperm(client, channel, message)
 
 
 

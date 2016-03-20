@@ -61,7 +61,7 @@ client = discord.Client()
 async def on_message(message):
 	global prefix
 	channel = message.channel
-	command.actLog(client, channel, message)
+	# command.actLog(client, channel, message)
 	if message.content.startswith(prefix + 'about'):
 		await client.send_message(message.channel, 'can ping and host')
 	elif message.content.startswith(prefix + 'meme'):
@@ -171,8 +171,6 @@ async def on_message(message):
 		await command.actPrefix(client, channel, message)
 		with open("config/prefix.txt") as myfile:
 			prefix=myfile.read().replace('\n', '')
-	elif message.content.startswith(prefix + 'mod'):
-		await command.actMod(client, channel, message)
 	if '<@' + client.user.id + '>' in message.content:
 		await command.comOnmention(client, channel, message)
 
