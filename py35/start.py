@@ -36,7 +36,7 @@ async def on_message(message):
 	off = False
 	if off != True:
 		if message.content.startswith(prefix + 'start'):
-			if message.author.id == command.ownerID:
+			if message.author.id in command.modIDs:
 				p = subprocess.Popen(["python3.5", "metabot.py"])
 				while p.poll() is None:
 					await asyncio.sleep(1)

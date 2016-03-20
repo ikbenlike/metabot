@@ -15,6 +15,12 @@ import asyncio
 ownerID = "125422419736395777"
 tLog = True
 
+with open("config/prefix.txt") as myfile:
+    prefix=myfile.read().replace('\n', '')
+
+modIDList = open("config/mods.txt", "r")
+modIDs = modIDList.read().replace("\n", " ")
+
 async def actNoperm(client, channel, message):
 	await client.send_message(message.channel, 'you are not authorized to do that, ' + message.author.name)
 
@@ -59,7 +65,7 @@ async def comSource(client, channel, message):
 
 
 async def comPing(client, channel, message):
-	if message.author.id == ownerID:
+	if message.author.id in modIDs:
 		input_ = message.content
 		input_.split(" ")[0]
 		args = input_.split(" ")[1:]
@@ -97,7 +103,7 @@ async def comShame(client, channel, message):
 
 
 async def comGame(client, channel, message):
-	if message.author.id == ownerID:
+	if message.author.id in modIDs:
 		input_ = message.content
 		input_.split(" ")[0]
 		stuff = input_.split(" ")[1:]
@@ -112,19 +118,25 @@ async def comGame(client, channel, message):
 
 
 async def comExit(client, channel, message):
-	await client.send_message(message.channel, "why did you kill me?")
-	print("[exiting metabot]")
-	await client.logout()
+	if message.author.id in modIDs:
+		await client.send_message(message.channel, "why did you kill me?")
+		print("[exiting metabot]")
+		await client.logout()
+	elif:
+		await actNoperm(client, channel, message)
 
 
 
 async def comPing(client, channel, message):
-	input_ = message.content
-	input_.split(" ")[0]
-	args = input_.split(" ")[1:]
-	site = (' '.join(args))
-	ping = subprocess.check_output(['ping', '-c 3', site], universal_newlines=True)
-	await client.send_message(message.channel, '```' + ping + '```')
+	if message.author.id in modIDs:
+		input_ = message.content
+		input_.split(" ")[0]
+		args = input_.split(" ")[1:]
+		site = (' '.join(args))
+		ping = subprocess.check_output(['ping', '-c 3', site], universal_newlines=True)
+		await client.send_message(message.channel, '```' + ping + '```')
+	else:
+		await actNoperm(client, channel, message)
 
 
 
@@ -216,7 +228,7 @@ async def comNarude(client, channel, message):
 
 
 async def actClear(client, channel, message):
-	if message.author.id == ownerID:
+	if message.author.id in modIDs:
 		input_ = message.content
 		input_.split(" ")[0]
 		args = input_.split(" ")[1:]
@@ -239,7 +251,7 @@ async def actClear(client, channel, message):
 
 
 async def actSend(client, channel, message):
-	if message.author.id == ownerID:
+	if message.author.id in modIDs:
 		input_ = message.content
 		input_.split(" ")[0]
 		args = input_.split(" ")[1:]
@@ -287,7 +299,7 @@ async def comGlory(client, channel, message):
 
 async def actSwitchLog(client, channel, message):
 	global tLog
-	if message.author.id == ownerID:
+	if message.author.id in modIDs:
 		input_ = message.content
 		input_.split(" ")[0]
 		args = input_.split(" ")[1:]
@@ -367,3 +379,36 @@ async def comTroll(client, channel, message):
 
 async def comBoyz(client, channel, message):
 	await client.send_message(message.channel, "https://youtu.be/1a6WO1g0yGk")
+
+
+async def actPrefix(client, channel, message):
+	if message.author.id in modIDs:
+		input_ = message.content
+		input_.split(" ")
+		args = input_.split(" ")[1:]
+		setPrefixTo = args[0]
+		prefixFile = open("config/prefix.txt", "w")
+		prefixFile.write(setPrefixTo)
+		prefixFile.close()
+		await client.send_message(message.channel, client.user.name + "'s prefix has changed to " + setPrefixTo)
+	else:
+		await actNoperm(client, channel, message)
+
+
+
+async def actMod(client, channel, message):
+	global modIDs
+	global modIDList
+	if message.author.id in modIDs:
+		input_ = message.content
+		input_.split(" ")
+		args = input_.split(" ")[1:]
+		addNewMod = args[0]
+		modIDList.close()
+		modIDList = open("config/mods.txt", "a")
+		modIDList.write(addNewMod)
+		modIDList.close
+		modIDList = open("config/mods.txt", "r")
+		modIDs = modIDList.read().replace("\n", " ")
+	else:
+		actNoperm(client, channel, message)

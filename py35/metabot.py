@@ -6,7 +6,7 @@ import os
 import command
 import asyncio
 
-logInFromFile = False
+logInFromFile = True
 
 if logInFromFile == False:
 	inEmail = input("email: ")
@@ -74,7 +74,7 @@ async def on_message(message):
 		await command.comSource(client, channel, message)
 	elif message.content.startswith(prefix + 'ping'):
 		await command.comPing(client, channel, message)
-	elif message.content.startswith(prefix + '$host'):
+	elif message.content.startswith(prefix + 'host'):
 		await command.comHost(client, channel, message)
 	elif message.content.startswith(prefix + 'upvote'):
 		await command.comUpvote(client, channel, message)
@@ -168,19 +168,11 @@ async def on_message(message):
 	elif message.content.startswith(prefix + 'boyz'):
 		await command.comBoyz(client, channel, message)
 	elif message.content.startswith(prefix + 'prefix'):
-		if message.author.id == command.ownerID:
-			input_ = message.content
-			input_.split(" ")
-			args = input_.split(" ")[1:]
-			setPrefixTo = args[0]
-			prefixFile = open("config/prefix.txt", "w")
-			prefixFile.write(setPrefixTo)
-			prefixFile.close()
-			with open("config/prefix.txt") as myfile:
-				prefix=myfile.read().replace('\n', '')
-			await client.send_message(message.channel, client.user.name + "'s prefix has changed to " + setPrefixTo)
-		else:
-			await client.send_message(message.channel, "<@" + message.author.id + "> you don't have permission to do that")
+		await command.actPrefix(client, channel, message)
+		with open("config/prefix.txt") as myfile:
+			prefix=myfile.read().replace('\n', '')
+	elif message.content.startswith(prefix + 'mod'):
+		await command.actMod(client, channel, message)
 	if '<@' + client.user.id + '>' in message.content:
 		await command.comOnmention(client, channel, message)
 
