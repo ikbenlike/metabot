@@ -61,7 +61,7 @@ client = discord.Client()
 async def on_message(message):
 	global prefix
 	channel = message.channel
-	# command.actLog(client, channel, message)
+	command.actLog(client, channel, message)
 	if message.content.startswith(prefix + 'about'):
 		await client.send_message(message.channel, 'can ping and host')
 	elif message.content.startswith(prefix + 'meme'):
