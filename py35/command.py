@@ -122,7 +122,7 @@ async def comExit(client, channel, message):
 		await client.send_message(message.channel, "why did you kill me?")
 		print("[exiting metabot]")
 		await client.logout()
-	elif:
+	else:
 		await actNoperm(client, channel, message)
 
 
