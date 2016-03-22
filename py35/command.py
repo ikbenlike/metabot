@@ -416,3 +416,9 @@ async def actMod(client, channel, message):
 		modIDs = modIDList.read().replace("\n", " ")
 	else:
 		actNoperm(client, channel, message)
+
+
+
+async def comServer(client, channel, message):
+    connectedServers = [server.name for server in client.servers]
+    await client.send_message(message.channel, "```" + ("\n".join(connectedServers)) + "```")

@@ -167,6 +167,8 @@ async def on_message(message):
 		command.comTroll(client, channel, message)
 	elif message.content.startswith(prefix + 'boyz'):
 		await command.comBoyz(client, channel, message)
+	elif message.content.startswith(prefix + 'servers'):
+		await command.comServer(client, channel, message)
 	elif message.content.startswith(prefix + 'prefix'):
 		await command.actPrefix(client, channel, message)
 		with open("config/prefix.txt") as myfile:
