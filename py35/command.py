@@ -422,3 +422,12 @@ async def actMod(client, channel, message):
 async def comServer(client, channel, message):
     connectedServers = [server.name for server in client.servers]
     await client.send_message(message.channel, "```" + ("\n".join(connectedServers)) + "```")
+
+
+
+async def comInvite(client, channel, message):
+    input_ = message.content
+    input_.split(" ")
+    args = input_.split(" ")[1:]
+    inviteToAccept = args[0]
+    await client.accept_invite(inviteToAccept)
