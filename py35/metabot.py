@@ -14,45 +14,45 @@ if logInFromFile == False:
 	if os.name == "nt":
 		os.system("cls")
 	elif os.name == "posix":
-		os.system('clear')
+		os.system("clear")
 elif logInFromFile == True:
 	with open("config/inemail.txt") as loginemail:
-		inEmail = loginemail.read().replace('\n', '')
+		inEmail = loginemail.read().replace("\n", "")
 	with open("config/inpassword.txt") as loginpassword:
-		inPassword = loginpassword.read().replace('\n', '')
+		inPassword = loginpassword.read().replace("\n", "")
 
 
 with open("config/prefix.txt") as myfile:
     prefix=myfile.read().replace('\n', '')
 
 
-commands = ('``` \nabout				   about this bot\n'
-				 'summary				 tell someone to read summary\n'
-				 'wiki					link to wiki\n'
-				 'source				   displays source\n'
-				 'linux				   link to commandline guide\n'
-				 '!bots/;bots			 prints bots\n'
-				 'new					 tells new guy what to do\n'
-				 'ping 				   ping a site (currently only for owner)\n'
-				 'host 				   find out the IP address of a site\n'
-				 'exit					exits bot (only for owner)\n'
-				 'kill 				   exits wrapper (only for owner)\n'
-				 'echo 				   repeats a message\n'
-				 'game 				   set game (only for owner)\n'
-				 'lmgtfy 				 search for something on google\n'
-				 'report 				 report an error in the bot\n'
-				 'clear -t/-l/-erl		clear terminal with -t, log with -l and errorlog with -erl (owner only)\n'
-				 'send -l/-erl/-a		 send log with -l, errorlog with -erl and both with -a (owner only)\n'
-				 'ucommands			   print useless commands```'
+commands = ("``` \nabout				   about this bot\n"
+				 "summary				 tell someone to read summary\n"
+				 "wiki					link to wiki\n"
+				 "source				   displays source\n"
+				 "linux				   link to commandline guide\n"
+				 "!bots/;bots			 prints bots\n"
+				 "new					 tells new guy what to do\n"
+				 "ping 				   ping a site (currently only for owner)\n"
+				 "host 				   find out the IP address of a site\n"
+				 "exit					exits bot (only for owner)\n"
+				 "kill 				   exits wrapper (only for owner)\n"
+				 "echo 				   repeats a message\n"
+				 "game 				   set game (only for owner)\n"
+				 "lmgtfy 				 search for something on google\n"
+				 "report 				 report an error in the bot\n"
+				 "clear -t/-l/-erl		clear terminal with -t, log with -l and errorlog with -erl (owner only)\n"
+				 "send -l/-erl/-a		 send log with -l, errorlog with -erl and both with -a (owner only)\n"
+				 "ucommands			   print useless commands```"
 			)
 
-commandsu = ('``` \n$meme		linksto very funny memes \n'
-					'$upvote	  prints +1\n'
-					'$downvote	prints -1\n'
-					'$repost	  prints this is a repost bitch\n'
-					'$hame		really funny gif\n'
-					'$kynet	   terminator reference\n'
-					'$wam		 dedotated wam\n```'
+commandsu = ("``` \n$meme		linksto very funny memes \n"
+					"$upvote	  prints +1\n"
+					"$downvote	prints -1\n"
+					"$repost	  prints this is a repost bitch\n"
+					"$hame		really funny gif\n"
+					"$kynet	   terminator reference\n"
+					"$wam		 dedotated wam\n```"
 			)
 
 client = discord.Client()
@@ -62,32 +62,30 @@ async def on_message(message):
 	global prefix
 	channel = message.channel
 	command.actLog(client, channel, message)
-	if message.content.startswith(prefix + 'about'):
-		await client.send_message(message.channel, 'can ping and host')
-	elif message.content.startswith(prefix + 'meme'):
-		await client.send_message(message.channel, 'bit.ly/1ITzC4D')
-	elif message.content.startswith(prefix + 'summary'):
-		await client.send_message(message.channel, 'read #summary before asking stuff!')
-	elif message.content.startswith(prefix + 'wiki'):
-		await client.send_message(message.channel, 'http://wiki.databutt.com/index.php?title=Main_Page')
-	elif message.content.startswith(prefix + 'source'):
+	if message.content.startswith(prefix + "about"):
+		await client.send_message(message.channel, "can ping and host")
+	elif message.content.startswith(prefix + "summary"):
+		await client.send_message(message.channel, "read #summary before asking stuff!")
+	elif message.content.startswith(prefix + "wiki"):
+		await client.send_message(message.channel, "http://wiki.databutt.com/index.php?title=Main_Page")
+	elif message.content.startswith(prefix + "source"):
 		await command.comSource(client, channel, message)
-	elif message.content.startswith(prefix + 'ping'):
+	elif message.content.startswith(prefix + "ping"):
 		await command.comPing(client, channel, message)
-	elif message.content.startswith(prefix + 'host'):
+	elif message.content.startswith(prefix + "host"):
 		await command.comHost(client, channel, message)
-	elif message.content.startswith(prefix + 'upvote'):
+	elif message.content.startswith(prefix + "upvote"):
 		await command.comUpvote(client, channel, message)
-	elif message.content.startswith(prefix + 'downvote'):
-		await client.send_message(message.channel, '-1')
-	elif message.content.startswith(prefix + 'repost'):
-		await client.send_message(message.channel, 'thats a repost bitch')
-	elif message.content.startswith(prefix + 'linux'):
-		await client.send_message(message.channel, 'https://www.codecademy.com/learn/learn-the-command-line')
-	elif message.content.startswith('!bots'):
-		await client.send_message(message.channel, '``` can ping and host ```')
+	elif message.content.startswith(prefix + "downvote"):
+		await client.send_message(message.channel, "-1")
+	elif message.content.startswith(prefix + "repost"):
+		await client.send_message(message.channel, "thats a repost bitch")
+	elif message.content.startswith(prefix + "linux"):
+		await client.send_message(message.channel, "https://www.codecademy.com/learn/learn-the-command-line")
+	elif message.content.startswith("!bots"):
+		await client.send_message(message.channel, "``` can ping and host ```")
 	elif message.content.startswith(prefix + 'bots'):
-		await client.send_message(message.channel, '``` can ping and host ```')
+		await client.send_message(message.channel, "``` can ping and host ```")
 	elif message.content.startswith(';bots'):
 		await client.send_message(message.channel, '``` can ping and host ```')
 	elif message.content.startswith(prefix + 'new'):
