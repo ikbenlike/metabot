@@ -86,102 +86,102 @@ async def on_message(message):
 		await client.send_message(message.channel, "``` can ping and host ```")
 	elif message.content.startswith(prefix + 'bots'):
 		await client.send_message(message.channel, "``` can ping and host ```")
-	elif message.content.startswith(';bots'):
-		await client.send_message(message.channel, '``` can ping and host ```')
-	elif message.content.startswith(prefix + 'new'):
-		await client.send_message(message.channel, '``` \n read #rules for the rules \n read #summary for the summary \n read tools for useful tools \n ```')
-	elif message.content.startswith(prefix + 'shame'):
+	elif message.content.startswith(";bots"):
+		await client.send_message(message.channel, "``` can ping and host ```")
+	elif message.content.startswith(prefix + "new"):
+		await client.send_message(message.channel, "``` \n read #rules for the rules \n read #summary for the summary \n read tools for useful tools \n ```")
+	elif message.content.startswith(prefix + "shame"):
 		await command.comShame(client, channel, message)
-	elif message.content.startswith(prefix + 'skynet'):
+	elif message.content.startswith(prefix + "skynet"):
 		await command.comSkynet(client, channel, message)
-	elif message.content.startswith(prefix + 'garage'):
+	elif message.content.startswith(prefix + "garage"):
 		await command.comGarage(client, channel, message)
-	elif message.content.startswith(prefix + 'wam'):
+	elif message.content.startswith(prefix + "wam"):
 		await command.comWam(client, channel, message)
-	elif message.content.startswith(prefix + 'toomuch'):
-		await client.send_message(message.channel, 'https://youtu.be/Nar-uT50-pM')
-	elif message.content.startswith(prefix + 'commands'):
-		await client.send_message(message.channel, 'my prefix is "' + prefix + '"')
+	elif message.content.startswith(prefix + "toomuch"):
+		await client.send_message(message.channel, "https://youtu.be/Nar-uT50-pM")
+	elif message.content.startswith(prefix + "commands"):
+		await client.send_message(message.channel, "my prefix is `" + prefix + "`")
 		await client.send_message(message.channel, commands)
-	elif message.content.startswith(prefix + 'ucommands'):
+	elif message.content.startswith(prefix + "ucommands"):
 		await client.send_message(message.channel, commandsu)
-	elif message.content.startswith(prefix + 'exit'):
+	elif message.content.startswith(prefix + "exit"):
 		await command.comExit(client, channel, message)
-	elif message.content.startswith(prefix + 'echo'):
+	elif message.content.startswith(prefix + "echo"):
 		await command.comEcho(client, channel, message)
-	elif message.content.startswith(prefix + 'game'):
+	elif message.content.startswith(prefix + "game"):
 		await command.comGame(client, channel, message)
-	elif message.content.startswith(prefix + 'lmgtfy '):
+	elif message.content.startswith(prefix + "lmgtfy "):
 		await command.comLmgtfy(client, channel, message)
-	elif message.content.startswith(prefix + 'report'):
+	elif message.content.startswith(prefix + "report"):
 		await command.actError(client, channel, message)
-	elif message.content.startswith(prefix + 'kappa'):
+	elif message.content.startswith(prefix + "kappa"):
 		await command.comKappa(client, channel, message)
-	elif message.content.startswith(prefix + 'no'):
+	elif message.content.startswith(prefix + "no"):
 		await command.comNo(client, channel, message)
-	elif message.content.startswith('#summary'):
+	elif message.content.startswith("#summary"):
 		await command.comSummary(client, channel, message)
-	elif message.content.startswith(prefix + 'sandstorm'):
+	elif message.content.startswith(prefix + "sandstorm"):
 		await command.comDarude(client, channel, message)
-	elif message.content.startswith(prefix + 'nuke'):
+	elif message.content.startswith(prefix + "nuke"):
 		await command.comNuke(client, channel, message)
-	elif message.content.startswith(prefix + 'spam'):
+	elif message.content.startswith(prefix + "spam"):
 		await command.comSpam(client, channel, message)
-	elif message.content.startswith(prefix + 'strawman'):
+	elif message.content.startswith(prefix + "strawman"):
 		await command.comStrawman(client, channel, message)
-	elif message.content.startswith(prefix + 'narude'):
+	elif message.content.startswith(prefix + "narude"):
 		await command.comNarude(client, channel, message)
-	elif message.content.startswith(prefix + 'clear'):
+	elif message.content.startswith(prefix + "clear"):
 		await command.actClear(client, channel, message)
-	elif message.content.startswith(prefix + 'send'):
+	elif message.content.startswith(prefix + "send"):
 		await command.actSend(client, channel, message)
-	elif message.content.startswith(prefix + 'wizard'):
+	elif message.content.startswith(prefix + "wizard"):
 		await command.comWizard(client, channel, message)
-	elif message.content.startswith(prefix + 'hogwarts'):
+	elif message.content.startswith(prefix + "hogwarts"):
 		await command.comHogwarts(client, channel, message)
-	elif message.content.startswith(prefix + 'nice'):
+	elif message.content.startswith(prefix + "nice"):
 		await command.comNoice(client, channel, message)
-	elif message.content.startswith(prefix + 'nigif'):
+	elif message.content.startswith(prefix + "nigif"):
 		await command.comNigif(client, channel, message)
-	elif message.content.startswith(prefix + 'glory'):
+	elif message.content.startswith(prefix + "glory"):
 		await command.comGlory(client, channel, message)
-	elif message.content.startswith(prefix + 'log'):
+	elif message.content.startswith(prefix + "log"):
 		await command.actSwitchLog(client, channel, message)
-	elif message.content.startswith(prefix + 'pm'):
+	elif message.content.startswith(prefix + "pm"):
 		await command.comPM(client, channel, message)
-	elif message.content.startswith(prefix + 'id'):
+	elif message.content.startswith(prefix + "id"):
 		await command.comID(client, channel, message)
-	elif message.content.startswith(prefix + 'bing'):
+	elif message.content.startswith(prefix + "bing"):
 		await command.comBing(client, channel, message)
-	elif message.content.startswith(prefix + 'duck'):
+	elif message.content.startswith(prefix + "duck"):
 		await command.comDuck(client, channel, message)
-	elif message.content.startswith(prefix + 'puppet'):
+	elif message.content.startswith(prefix + "puppet"):
 		await command.comPuppet(client, channel, message)
-	elif message.content.startswith(prefix + 'hobbits'):
+	elif message.content.startswith(prefix + "hobbits"):
 		await command.comHobbits(client, channel, message)
-	elif message.content.startswith(prefix + 'rum'):
+	elif message.content.startswith(prefix + "rum"):
 		await command.comRum(client, channel, message)
-	elif message.content.startswith(prefix + 'troll'):
+	elif message.content.startswith(prefix + "troll"):
 		command.comTroll(client, channel, message)
-	elif message.content.startswith(prefix + 'boyz'):
+	elif message.content.startswith(prefix + "boyz"):
 		await command.comBoyz(client, channel, message)
-	elif message.content.startswith(prefix + 'servers'):
+	elif message.content.startswith(prefix + "servers"):
 		await command.comServer(client, channel, message)
-	elif message.content.startswith(prefix + 'invite'):
+	elif message.content.startswith(prefix + "invite"):
 		await command.comInvite(client, channel, message)
-	elif message.content.startswith(prefix + 'prefix'):
+	elif message.content.startswith(prefix + "prefix"):
 		await command.actPrefix(client, channel, message)
 		with open("config/prefix.txt") as myfile:
-			prefix=myfile.read().replace('\n', '')
-	if '<@' + client.user.id + '>' in message.content:
+			prefix=myfile.read().replace("\n", "")
+	if "<@" + client.user.id + ">" in message.content:
 		await command.comOnmention(client, channel, message)
 
 @client.event
 async def on_ready():
-	print('Logged in as')
+	print("Logged in as")
 	print(client.user.name)
 	print(client.user.id)
-	print('------')
-	print('----MetaBot has started----')
+	print("------")
+	print("----MetaBot has started----")
 
 client.run(inEmail, inPassword)
