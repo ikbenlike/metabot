@@ -43,11 +43,6 @@ async def actError(client, channel, message):
 
 
 
-async def comAbout(client, channel, message):
-	await client.send_message(message.channel, " ``` can ping and host (currently only for watcher)``` ")
-
-
-
 async def comSummary(client, channel, message):
 	await client.send_message(message.channel, "read #summary before asking stuff!")
 
@@ -431,3 +426,8 @@ async def comInvite(client, channel, message):
     args = input_.split(" ")[1:]
     inviteToAccept = args[0]
     await client.accept_invite(inviteToAccept)
+
+
+
+async def comAbout(client, channel, message):
+    await client.send_message(message.channel, "currently using Python Discord wrapper version" + discord.__version__ + "\ncurrently logged in as " + client.user.name + " with the ID of " + client.user.id)

@@ -63,7 +63,7 @@ async def on_message(message):
 	channel = message.channel
 	command.actLog(client, channel, message)
 	if message.content.startswith(prefix + "about"):
-		await client.send_message(message.channel, "can ping and host")
+		await command.comAbout(client, channel, message)
 	elif message.content.startswith(prefix + "summary"):
 		await client.send_message(message.channel, "read #summary before asking stuff!")
 	elif message.content.startswith(prefix + "wiki"):
