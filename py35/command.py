@@ -431,3 +431,12 @@ async def comInvite(client, channel, message):
 
 async def comAbout(client, channel, message):
     await client.send_message(message.channel, "currently using Python Discord wrapper version" + discord.__version__ + "\ncurrently logged in as " + client.user.name + " with the ID of " + client.user.id)
+
+
+
+async def comTts(client, channel, message):
+	if message.author.id != client.user.id:
+		input_ = message.content
+		input_.split(" ")[0]
+		args = input_.split(" ")[1:]
+		await client.send_message(message.channel, (" ".join(args)), tts=True)

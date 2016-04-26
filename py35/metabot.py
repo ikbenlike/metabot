@@ -9,17 +9,14 @@ import asyncio
 logInFromFile = True
 
 if logInFromFile == False:
-	inEmail = input("email: ")
-	inPassword = input("password: ")
+	inToken = input("token: ")
 	if os.name == "nt":
 		os.system("cls")
 	elif os.name == "posix":
 		os.system("clear")
 elif logInFromFile == True:
-	with open("config/inemail.txt") as loginemail:
-		inEmail = loginemail.read().replace("\n", "")
-	with open("config/inpassword.txt") as loginpassword:
-		inPassword = loginpassword.read().replace("\n", "")
+	with open("config/intoken.txt") as intoken:
+		inToken = intoken.read().replace("\n", "")
 
 
 with open("config/prefix.txt") as myfile:
@@ -169,6 +166,8 @@ async def on_message(message):
 		await command.comServer(client, channel, message)
 	elif message.content.startswith(prefix + "invite"):
 		await command.comInvite(client, channel, message)
+	elif message.content.startswith(prefix + "tts"):
+		await command.comTts(client, channel, message)
 	elif message.content.startswith(prefix + "prefix"):
 		await command.actPrefix(client, channel, message)
 		with open("config/prefix.txt") as myfile:
@@ -184,4 +183,4 @@ async def on_ready():
 	print("------")
 	print("----MetaBot has started----")
 
-client.run(inEmail, inPassword)
+client.run(inToken)

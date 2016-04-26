@@ -10,17 +10,14 @@ import asyncio
 logInFromFile = True
 
 if logInFromFile == False:
-	inEmail = input("email: ")
-	inPassword = input("password: ")
+	inToken = input("token: ")
 	if os.name == "nt":
 		os.system("cls")
 	elif os.name == "posix":
 		os.system('clear')
 elif logInFromFile == True:
-	with open("config/inemail.txt") as loginemail:
-		inEmail = loginemail.read().replace('\n', '')
-	with open("config/inpassword.txt") as loginpassword:
-		inPassword = loginpassword.read().replace('\n', '')
+	with open("config/intoken.txt") as intoken:
+		inToken = intoken.read().replace('\n', '')
 
 
 prefixFile = open("config/prefix.txt", "r")
@@ -73,4 +70,4 @@ async def on_ready():
 	print('------')
 
 
-client.run(inEmail, inPassword)
+client.run(inToken)
