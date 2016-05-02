@@ -79,11 +79,7 @@ async def on_message(message):
 		await client.send_message(message.channel, "thats a repost bitch")
 	elif message.content.startswith(prefix + "linux"):
 		await client.send_message(message.channel, "https://www.codecademy.com/learn/learn-the-command-line")
-	elif message.content.startswith("!bots"):
-		await client.send_message(message.channel, "``` can ping and host ```")
 	elif message.content.startswith(prefix + 'bots'):
-		await client.send_message(message.channel, "``` can ping and host ```")
-	elif message.content.startswith(";bots"):
 		await client.send_message(message.channel, "``` can ping and host ```")
 	elif message.content.startswith(prefix + "new"):
 		await client.send_message(message.channel, "``` \n read #rules for the rules \n read #summary for the summary \n read tools for useful tools \n ```")
